@@ -2,8 +2,9 @@ name: Hello Pipeline
 
 on:
   push:
-    branches:
-      - lab03
+    branches: [ lab03 ]
+  workflow_dispatch:
+    
 
 jobs:
   run-lab2-script:
