@@ -6,8 +6,11 @@ on:
       - lab03
 
 jobs:
-  say-hello:
+  run-lab2-script:
     runs-on: ubuntu-latest
     steps:
-      - name: Run script
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run lab2.sh
         run: ./deliverables/lab02/lab2.sh
