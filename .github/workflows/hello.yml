@@ -1,0 +1,13 @@
+name: Hello Pipeline
+
+on:
+  push:
+    branches:
+      - lab03
+
+jobs:
+  say-hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say hello
+        run: echo "Hello pipelines' world!"
