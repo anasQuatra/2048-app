@@ -9,5 +9,5 @@ jobs:
   say-hello:
     runs-on: ubuntu-latest
     steps:
-      - name: Say hello
+      - name: Run script
         run: ./deliverables/lab02/lab2.sh
