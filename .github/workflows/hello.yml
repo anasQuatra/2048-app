@@ -12,5 +12,22 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Setup Node.js and pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'pnpm'
+
+      - name: Fix script encoding
+        run: dos2unix ./deliverables/lab02/lab2.sh || sed -i '1s/^\xef\xbb\xbf//' ./deliverables/lab02/lab2.sh
+
+      - name: Make script executable
+        run: chmod +x ./deliverables/lab02/lab2.sh
+
       - name: Run lab2.sh
         run: ./deliverables/lab02/lab2.sh
