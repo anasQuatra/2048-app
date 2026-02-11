@@ -24,6 +24,9 @@ jobs:
           node-version: 22
           cache: 'pnpm'
 
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
+
       - name: Check outdated dependencies
         run: |
           mkdir -p reports
