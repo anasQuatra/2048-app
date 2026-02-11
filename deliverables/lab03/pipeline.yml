@@ -1,0 +1,36 @@
+name: Hello Pipeline
+
+on:
+  push:
+    branches: [ lab03 ]
+  workflow_dispatch:
+    
+
+jobs:
+  run-lab2-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Clean install dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Fix script encoding
+        run: dos2unix ./deliverables/lab02/lab2.sh || sed -i '1s/^\xef\xbb\xbf//' ./deliverables/lab02/lab2.sh
+
+      - name: Make script executable
+        run: chmod +x ./deliverables/lab02/lab2.sh
+
+      - name: Run lab2.sh
+        run: ./deliverables/lab02/lab2.sh

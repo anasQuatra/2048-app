@@ -12,6 +12,3 @@ execute le pipeline + possibilité de parallélisation + choix d'agent par pipel
 
 # Structure
 pipeline ( n stages ) -> stage (m jobs) [diff agents] -> job (k tasks) 
-
-
-change to test workflow
