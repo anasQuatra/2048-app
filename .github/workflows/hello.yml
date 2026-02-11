@@ -24,11 +24,32 @@ jobs:
           node-version: 22
           cache: 'pnpm'
 
-      - name: Clean install dependencies
+      - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
-      - name: Make script executable
-        run: chmod +x ./deliverables/lab02/lab2.sh
+      - name: Check outdated dependencies
+        run: |
+          mkdir -p reports
+          pnpm outdated --format json > reports/outdated-dependencies.json || true
 
-      - name: Run lab2.sh
-        run: ./deliverables/lab02/lab2.sh
+      - name: Security audit
+        run: pnpm audit --json > reports/vulnerable-dependencies.json || true
+
+      - name: Type check
+        run: pnpm nuxt typecheck
+
+      - name: Build
+        run: pnpm nuxt build
+
+      - name: Lint
+        run: pnpm eslint .
+
+      - name: Test
+        run: pnpm vitest run
+
+      - name: Upload dependency reports
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: dependency-reports
+          path: reports/
