@@ -16,3 +16,7 @@ pipeline ( n stages ) -> stage (m jobs) [diff agents] -> job (k tasks)
 # Copilot
 utilisation des .github/instructions/ et /prompts pour autmatiser le travail et gagner du temps
 en spécifiant les fichiers souhaités + l'instruction dans les fichiers : .instructions.md / .prompt.md 
+
+# Github actions
+c'est conseillé d'utiliser des alias / raccourci comme "build" pour la commande 'pnpm nuxt build'. Comme ça , si jamais on change l'implémentation 
+le pipeline reste fonctionnel
