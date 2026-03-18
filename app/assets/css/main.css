@@ -4,6 +4,7 @@
 /* Custom styles for 2048 game */
 body {
   font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
+  background-color: #f4efe2;
   -webkit-tap-highlight-color: transparent;
   user-select: none;
 }
