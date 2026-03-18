@@ -38,6 +38,7 @@ jobs:
         with:
           name: 2048-app-build
           path: .output/
+          include-hidden-files: true
           retention-days: 1
 
   deploy_production:
